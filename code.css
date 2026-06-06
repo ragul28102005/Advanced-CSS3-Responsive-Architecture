@@ -1,0 +1,420 @@
+/* =========================
+   CSS RESET
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+li {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+/* =========================
+   DESIGN TOKENS
+========================= */
+
+:root {
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --surface-hover: #eef2ff;
+
+  --text: #0f172a;
+  --text-muted: #64748b;
+
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+
+  --border: #e2e8f0;
+
+  --shadow-sm: 0 4px 12px rgba(0,0,0,.06);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.12);
+
+  --radius: 18px;
+
+  --container: 1280px;
+
+  --transition: 0.3s ease;
+}
+
+/* Dark Theme */
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-hover: #334155;
+
+  --text: #f8fafc;
+  --text-muted: #cbd5e1;
+
+  --primary: #818cf8;
+  --primary-hover: #6366f1;
+
+  --border: #334155;
+
+  --shadow-sm: 0 4px 12px rgba(0,0,0,.35);
+  --shadow-lg: 0 16px 40px rgba(0,0,0,.5);
+}
+
+/* =========================
+   BASE
+========================= */
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    Inter,
+    system-ui,
+    sans-serif;
+
+  line-height: 1.7;
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+.container {
+  width: min(92%, var(--container));
+  margin-inline: auto;
+}
+
+section {
+  padding: 5rem 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+p {
+  color: var(--text-muted);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  backdrop-filter: blur(14px);
+  background: color-mix(
+    in srgb,
+    var(--bg) 85%,
+    transparent
+  );
+
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  min-height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  min-height: 90vh;
+
+  display: grid;
+  place-items: center;
+}
+
+.hero-grid {
+  display: grid;
+  gap: 3rem;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+  padding: 1rem 1.6rem;
+
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+
+  transition:
+    transform .25s ease,
+    background .25s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* =========================
+   PROJECTS GRID
+========================= */
+
+.projects-grid {
+  display: grid;
+  gap: 2rem;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.project-card {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  overflow: hidden;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+
+  box-shadow: var(--shadow-lg);
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-grid {
+  display: grid;
+  gap: 3rem;
+}
+
+.skills-grid {
+  display: grid;
+
+  gap: 1rem;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.skill {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  padding: 1rem;
+
+  text-align: center;
+
+  border-radius: 12px;
+}
+
+/* =========================
+   CONTACT FORM
+========================= */
+
+.contact-wrapper {
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+input,
+textarea {
+  padding: 1rem;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  color: var(--text);
+}
+
+input:focus,
+textarea:focus {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  border-top: 1px solid var(--border);
+
+  padding: 2rem 0;
+
+  text-align: center;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (min-width: 768px) {
+
+  .hero-grid {
+    grid-template-columns:
+      1.2fr 1fr;
+
+    align-items: center;
+  }
+
+  .about-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 1024px) {
+
+  .projects-grid {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+  .hero {
+    min-height: 100vh;
+  }
+}
+
+/* =========================
+   LARGE SCREENS
+========================= */
+
+@media (min-width: 1440px) {
+
+  .projects-grid {
+    grid-template-columns:
+      repeat(4, 1fr);
+  }
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+
+  background: var(--primary);
+  color: white;
+
+  padding: 1rem;
+
+  z-index: 9999;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto;
+    animation: none !important;
+    transition: none !important;
+  }
+}
